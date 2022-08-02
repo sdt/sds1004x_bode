@@ -64,9 +64,12 @@ class AwgServer(object):
             self.vxi11_port = vxi11_port
         else:
             self.vxi11_port = VXI11_PORT
-        
-        if awg is None or not isinstance(awg, BaseAWG):
-                raise TypeError("awg variable must be of AWG class.")
+
+        if awg is None:
+                raise TypeError("awg variable not be None")
+        # Cannot get this to work with Python3
+        #if not isinstance(awg, base_awg.BaseAWG):
+                #raise TypeError("awg variable must be of AWG class.")
         self.awg = awg
         
     def create_socket(self, host, port):
