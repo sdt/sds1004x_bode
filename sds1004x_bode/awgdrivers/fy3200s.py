@@ -71,9 +71,8 @@ class FY3200S(BaseAWG):
         Turns channels output on or off.
         The channel is defined by channel variable. If channel is 0, both channels are set.
         """
-        value = 1 if on else 0
         for ch in self._channels(channel):
-            self.feeltech.send(ch._prefix + "g%d" % value)
+            ch.enable_output(on)
 
     def set_frequency(self, channel, freq):
         """
